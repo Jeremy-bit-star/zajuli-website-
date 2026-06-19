@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZAJULI | Cyber Runner</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Orbitron',sans-serif;
+}
+
+body{
+background:#050816;
+color:white;
+overflow-x:hidden;
+}
+
+body::before{
+content:'';
+position:fixed;
+width:200%;
+height:200%;
+background:
+radial-gradient(circle,#00f7ff22 1px,transparent 1px);
+background-size:40px 40px;
+animation:bgMove 20s linear infinite;
+z-index:-2;
+}
+
+@keyframes bgMove{
+from{transform:translate(0,0);}
+to{transform:translate(-200px,-200px);}
+}
+
+.hero{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+text-align:center;
+padding:20px;
+}
+
+.hero h1{
+font-size:5rem;
+color:#00f7ff;
+text-shadow:
+0 0 10px #00f7ff,
+0 0 20px #00f7ff,
+0 0 40px #00f7ff;
+animation:pulse 2s infinite;
+}
+
+.hero p{
+margin-top:15px;
+font-size:1.2rem;
+color:#ccc;
+}
+
+@keyframes pulse{
+50%{
+text-shadow:
+0 0 20px #00f7ff,
+0 0 40px #00f7ff,
+0 0 80px #00f7ff;
+}
+}
+
+.card-container{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:20px;
+padding:40px;
+}
+
+.card{
+width:300px;
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,255,255,0.1);
+backdrop-filter:blur(10px);
+padding:25px;
+border-radius:20px;
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-10px);
+box-shadow:0 0 25px #00f7ff;
+}
+
+.card h2{
+color:#00f7ff;
+margin-bottom:15px;
+}
+
+.clock{
+font-size:2rem;
+text-align:center;
+margin-top:10px;
+}
+
+.quote{
+text-align:center;
+font-size:1.1rem;
+padding:30px;
+color:#ddd;
+}
+
+.goal{
+text-align:center;
+padding:50px 20px;
+}
+
+.progress{
+width:80%;
+height:30px;
+margin:auto;
+background:#222;
+border-radius:50px;
+overflow:hidden;
+}
+
+.bar{
+height:100%;
+width:75%;
+background:linear-gradient(90deg,#00f7ff,#7b2fff);
+animation:load 3s ease;
+}
+
+@keyframes load{
+from{width:0;}
+to{width:75%;}
+}
+
+footer{
+text-align:center;
+padding:40px;
+color:#888;
+}
+
+.neon-circle{
+position:fixed;
+width:250px;
+height:250px;
+background:#00f7ff33;
+border-radius:50%;
+filter:blur(80px);
+top:10%;
+left:-100px;
+z-index:-1;
+}
+
+.neon-circle2{
+position:fixed;
+width:250px;
+height:250px;
+background:#7b2fff44;
+border-radius:50%;
+filter:blur(80px);
+bottom:10%;
+right:-100px;
+z-index:-1;
+}
+</style>
+</head>
+
+<body>
+
+<div class="neon-circle"></div>
+<div class="neon-circle2"></div>
+
+<section class="hero">
+<h1>ZAJULI</h1>
+<p>RUN FASTER • DREAM BIGGER • NEVER STOP</p>
+</section>
+
+<div class="card-container">
+
+<div class="card">
+<h2>🏃 Running Journey</h2>
+<p>Total Distance: 250+ KM</p>
+<p>Best Pace: 4:30/km</p>
+<p>Next Goal: Half Marathon</p>
+</div>
+
+<div class="card">
+<h2>🎮 Gaming Zone</h2>
+<p>Mobile Legends</p>
+<p>Competitive Mindset</p>
+<p>Always Leveling Up</p>
+</div>
+
+<div class="card">
+<h2>⚡ Achievement</h2>
+<p>Consistency</p>
+<p>Discipline</p>
+<p>Never Give Up</p>
+</div>
+
+</div>
+
+<div class="quote" id="quote">
+Loading Motivation...
+</div>
+
+<div class="clock" id="clock"></div>
+
+<section class="goal">
+<h2 style="margin-bottom:20px;color:#00f7ff;">
+TARGET PROGRESS
+</h2>
+
+<div class="progress">
+<div class="bar"></div>
+</div>
+
+<p style="margin-top:15px;">75% menuju target berikutnya</p>
+</section>
+
+<footer>
+Built With Passion By ZAJULI ⚡
+</footer>
+
+<script>
+
+function updateClock(){
+const now = new Date();
+
+document.getElementById("clock").innerHTML =
+now.toLocaleTimeString("id-ID");
+}
+
+setInterval(updateClock,1000);
+updateClock();
+
+const quotes = [
+"Langkah kecil hari ini adalah kemenangan besar di masa depan.",
+"Pelari hebat tidak lahir, mereka dibentuk oleh konsistensi.",
+"Jangan berhenti ketika lelah, berhentilah ketika selesai.",
+"Setiap kilometer adalah bukti bahwa kamu berkembang.",
+"ZAJULI never quits."
+];
+
+let q=0;
+
+function changeQuote(){
+document.getElementById("quote").innerHTML=quotes[q];
+q=(q+1)%quotes.length;
+}
+
+changeQuote();
+setInterval(changeQuote,4000);
+
+</script>
+
+</body>
+</html>
